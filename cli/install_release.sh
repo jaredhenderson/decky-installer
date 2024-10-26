@@ -5,7 +5,7 @@
 # [ "$UID" -eq 0 ] || exec sudo "$0" "$@"
 
 # check if JQ is installed
-if ! command -v jq &> /dev/null
+if ! which jq &> /dev/null
 then
     echo "JQ could not be found, please install it"
     echo "Info on how to install it can be found at https://stedolan.github.io/jq/download/"
