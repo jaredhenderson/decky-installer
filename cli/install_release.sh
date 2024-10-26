@@ -62,9 +62,9 @@ else
     cp "${SERVICES_FOLDER}/plugin_loader-backup" "${SERVICES_FOLDER}/plugin_loader"
 fi
 
-mkdir -p ${SERVICES_FOLDER}/.systemd
-cp ${SERVICES_FOLDER}/plugin_loader-release ${SERVICES_FOLDER}/.systemd/plugin_loader-release
-cp ${SERVICES_FOLDER}/plugin_loader-backup ${SERVICES_FOLDER}/.systemd/plugin_loader-backup
+mkdir -p ${SERVICES_FOLDER}/.decky_service_backups
+mv ${SERVICES_FOLDER}/plugin_loader-release ${SERVICES_FOLDER}/.decky_service_backups/plugin_loader-release
+cp ${SERVICES_FOLDER}/plugin_loader-backup ${SERVICES_FOLDER}/.decky_service_backups/plugin_loader-backup
 rm ${SERVICES_FOLDER}/plugin_loader-backup ${SERVICES_FOLDER}/plugin_loader-release
 
 batocera-services enable plugin_loader
