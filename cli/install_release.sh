@@ -56,16 +56,16 @@ curl -L https://raw.githubusercontent.com/jaredhenderson/decky-loader/main/dist/
 if [[ -f "${SERVICES_FOLDER}/plugin_loader-release" ]]; then
     printf "Grabbed latest release service.\n"
     # sed -i -e "s|\${SERVICES_FOLDER}|${SERVICES_FOLDER}|" "${SERVICES_FOLDER}/plugin_loader-release.service"
-    cp -f "${SERVICES_FOLDER}/plugin_loader-release.service" "${SERVICES_FOLDER}/plugin_loader"
+    cp -f "${SERVICES_FOLDER}/plugin_loader-release" "${SERVICES_FOLDER}/plugin_loader"
 else
     printf "Could not curl latest release systemd service, using built-in service as a backup!\n"
     cp "${SERVICES_FOLDER}/plugin_loader-backup" "${SERVICES_FOLDER}/plugin_loader"
 fi
 
 mkdir -p ${SERVICES_FOLDER}/.systemd
-cp ${SERVICES_FOLDER}/plugin_loader-release.service ${SERVICES_FOLDER}/.systemd/plugin_loader-release.service
-cp ${SERVICES_FOLDER}/plugin_loader-backup.service ${SERVICES_FOLDER}/.systemd/plugin_loader-backup.service
-rm ${SERVICES_FOLDER}/plugin_loader-backup.service ${SERVICES_FOLDER}/plugin_loader-release.service
+cp ${SERVICES_FOLDER}/plugin_loader-release ${SERVICES_FOLDER}/.systemd/plugin_loader-release
+cp ${SERVICES_FOLDER}/plugin_loader-backup ${SERVICES_FOLDER}/.systemd/plugin_loader-backup
+rm ${SERVICES_FOLDER}/plugin_loader-backup ${SERVICES_FOLDER}/plugin_loader-release
 
 batocera-services enable plugin_loader
 batocera-services start plugin_loader
