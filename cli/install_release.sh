@@ -1,4 +1,6 @@
 #!/bin/sh
+# To execute, run the below:
+# curl -L https://github.com/jaredhenderson/decky-installer/raw/refs/heads/main/cli/install_release.sh | sh
 
 # [ "$UID" -eq 0 ] || exec sudo "$0" "$@"
 
@@ -21,7 +23,7 @@ echo "Installing Steam Deck Plugin Loader release..."
 
 USER_DIR="/userdata/system"
 HOMEBREW_FOLDER="${USER_DIR}/homebrew"
-SERVICES_FOLDER="/userdata/system/services"
+SERVICES_FOLDER="${USER_DIR}/services"
 FLATPAK_FOLDER="/userdata/saves/flatpak/data"
 
 # Create folder structure
@@ -30,7 +32,7 @@ mkdir -p "${HOMEBREW_FOLDER}/services"
 mkdir -p "${HOMEBREW_FOLDER}/plugins"
 
 # if installed as flatpak, put .cef-enable-remote-debugging there
-touch "${FLATPAK_FOLDER}/.var/app/com.valvesoftware.Steam/data/Steam/.cef-enable-remote-debugging"
+touch "${FLATPAK_FOLDER}/.var/app/com.valvesoftware.Steam/.steam/steam/.cef-enable-remote-debugging"
 
 # Download latest release and install it
 RELEASE=$(curl -s 'https://api.github.com/repos/SteamDeckHomebrew/decky-loader/releases' | jq -r "first(.[] | select(.prerelease == "false"))")
