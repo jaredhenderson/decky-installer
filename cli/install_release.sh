@@ -51,21 +51,21 @@ echo $VERSION > ${HOMEBREW_FOLDER}/services/.loader.version
 batocera-services stop plugin_loader 2> /dev/null
 batocera-services disable plugin_loader 2> /dev/null
 
-curl -L https://raw.githubusercontent.com/jaredhenderson/decky-loader/main/dist/plugin_loader-release.sh  --output ${SERVICES_FOLDER}/plugin_loader-release
+curl -L https://raw.githubusercontent.com/jaredhenderson/decky-loader/main/dist/plugin_loader-release.sh  --output ${SERVICES_FOLDER}/plugin_loader_release
 
-if [[ -f "${SERVICES_FOLDER}/plugin_loader-release" ]]; then
+if [[ -f "${SERVICES_FOLDER}/plugin_loader_release" ]]; then
     printf "Grabbed latest release service.\n"
-    # sed -i -e "s|\${SERVICES_FOLDER}|${SERVICES_FOLDER}|" "${SERVICES_FOLDER}/plugin_loader-release.service"
-    cp -f "${SERVICES_FOLDER}/plugin_loader-release" "${SERVICES_FOLDER}/plugin_loader"
+    # sed -i -e "s|\${SERVICES_FOLDER}|${SERVICES_FOLDER}|" "${SERVICES_FOLDER}/plugin_loader_release"
+    cp -f "${SERVICES_FOLDER}/plugin_loader_release" "${SERVICES_FOLDER}/plugin_loader"
 else
     printf "Could not curl latest release systemd service, using built-in service as a backup!\n"
-    cp "${SERVICES_FOLDER}/plugin_loader-backup" "${SERVICES_FOLDER}/plugin_loader"
+    cp "${SERVICES_FOLDER}/plugin_loader_backup" "${SERVICES_FOLDER}/plugin_loader"
 fi
 
 mkdir -p ${SERVICES_FOLDER}/.decky_service_backups
-mv ${SERVICES_FOLDER}/plugin_loader-release ${SERVICES_FOLDER}/.decky_service_backups/plugin_loader-release
-cp ${SERVICES_FOLDER}/plugin_loader-backup ${SERVICES_FOLDER}/.decky_service_backups/plugin_loader-backup
-rm ${SERVICES_FOLDER}/plugin_loader-backup ${SERVICES_FOLDER}/plugin_loader-release
+mv ${SERVICES_FOLDER}/plugin_loader_release ${SERVICES_FOLDER}/.decky_service_backups/plugin_loader_release
+cp ${SERVICES_FOLDER}/plugin_loader_backup ${SERVICES_FOLDER}/.decky_service_backups/plugin_loader_backup
+rm ${SERVICES_FOLDER}/plugin_loader_backup ${SERVICES_FOLDER}/plugin_loader_release
 
 batocera-services enable plugin_loader
 batocera-services start plugin_loader
