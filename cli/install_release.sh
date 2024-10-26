@@ -60,10 +60,10 @@ else
     cp "${SERVICES_FOLDER}/plugin_loader-backup" "${SERVICES_FOLDER}/plugin_loader"
 fi
 
-mkdir -p ${SERVICES_FOLDER}/services/.systemd
-cp ${SERVICES_FOLDER}/services/plugin_loader-release.service ${SERVICES_FOLDER}/services/.systemd/plugin_loader-release.service
-cp ${SERVICES_FOLDER}/services/plugin_loader-backup.service ${SERVICES_FOLDER}/services/.systemd/plugin_loader-backup.service
-rm ${SERVICES_FOLDER}/services/plugin_loader-backup.service ${SERVICES_FOLDER}/services/plugin_loader-release.service
+mkdir -p ${SERVICES_FOLDER}/.systemd
+cp ${SERVICES_FOLDER}/plugin_loader-release.service ${SERVICES_FOLDER}/.systemd/plugin_loader-release.service
+cp ${SERVICES_FOLDER}/plugin_loader-backup.service ${SERVICES_FOLDER}/.systemd/plugin_loader-backup.service
+rm ${SERVICES_FOLDER}/plugin_loader-backup.service ${SERVICES_FOLDER}/plugin_loader-release.service
 
 batocera-services enable plugin_loader
 batocera-services start plugin_loader
