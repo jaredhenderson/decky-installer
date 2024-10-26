@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 # To execute, run the below:
-# curl -L https://github.com/jaredhenderson/decky-installer/raw/refs/heads/main/cli/install_release.sh | sh
+# curl -L https://github.com/jaredhenderson/decky-installer/raw/refs/heads/main/cli/install_release.sh | bash
 
 # [ "$UID" -eq 0 ] || exec sudo "$0" "$@"
 
