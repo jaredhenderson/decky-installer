@@ -5,12 +5,12 @@
 # [ "$UID" -eq 0 ] || exec sudo "$0" "$@"
 
 # check if JQ is installed
-if ! which jq &> /dev/null
-then
-    echo "JQ could not be found, please install it"
-    echo "Info on how to install it can be found at https://stedolan.github.io/jq/download/"
-    exit 1
-fi
+# if ! command -v jq &> /dev/null
+# then
+#     echo "JQ could not be found, please install it"
+#     echo "Info on how to install it can be found at https://stedolan.github.io/jq/download/"
+#     exit 1
+# fi
 
 # check if github.com is reachable
 if ! curl -Is https://github.com | head -1 | grep 200 > /dev/null
