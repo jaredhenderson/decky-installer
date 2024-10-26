@@ -51,6 +51,11 @@ echo $VERSION > ${HOMEBREW_FOLDER}/services/.loader.version
 batocera-services stop plugin_loader 2> /dev/null
 batocera-services disable plugin_loader 2> /dev/null
 
+if [[ -f "${SERVICES_FOLDER}/plugin_loader" ]]; then
+    printf "Back up existing service.\n"
+    cp -f "${SERVICES_FOLDER}/plugin_loader" "${SERVICES_FOLDER}/plugin_loader_backup"
+fi
+
 curl -L https://raw.githubusercontent.com/jaredhenderson/decky-loader/main/dist/plugin_loader-release.sh  --output ${SERVICES_FOLDER}/plugin_loader_release
 
 if [[ -f "${SERVICES_FOLDER}/plugin_loader_release" ]]; then
@@ -63,7 +68,6 @@ else
 fi
 
 mkdir -p ${SERVICES_FOLDER}/.decky_service_backups
-mv ${SERVICES_FOLDER}/plugin_loader_release ${SERVICES_FOLDER}/.decky_service_backups/plugin_loader_release
 cp ${SERVICES_FOLDER}/plugin_loader_backup ${SERVICES_FOLDER}/.decky_service_backups/plugin_loader_backup
 rm ${SERVICES_FOLDER}/plugin_loader_backup ${SERVICES_FOLDER}/plugin_loader_release
 
